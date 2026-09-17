@@ -1,5 +1,6 @@
 import pandas as pd
 import joblib
+import os
 
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -52,6 +53,7 @@ def train_model():
     print(classification_report(y_test, predictions))
 
     # Save model
+    os.makedirs("model", exist_ok=True)
     joblib.dump(model, MODEL_PATH)
 
     print(f"\nModel saved to: {MODEL_PATH}")
